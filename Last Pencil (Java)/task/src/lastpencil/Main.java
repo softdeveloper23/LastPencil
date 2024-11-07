@@ -10,11 +10,13 @@ public class Main {
         String jack = "Jack";
         String firstPlayer = "";
         String secondPlayer = "";
+        int firstPlayerTurn = 0;
+        int secondPlayerTurn = 0;
 
 
         int gamePencils = pencilAmount(scanner, pencils);
-
-
+        gameLoop(scanner, john, jack, gamePencils, firstPlayer, secondPlayer, firstPlayerTurn, secondPlayerTurn);
+        scanner.close();
     }
 
     private static int pencilAmount(Scanner scanner, int pencils) {
@@ -24,7 +26,7 @@ public class Main {
     }
 
     private static void gameLoop(Scanner scanner, String john, String jack, int gamePencils,
-                                 String firstPlayer, String secondPlayer) {
+                                 String firstPlayer, String secondPlayer, int firstPlayerTurn, int secondPlayerTurn) {
         System.out.println("Who will be the first (John, Jack):");
         String input = scanner.next();
 
@@ -36,13 +38,33 @@ public class Main {
             secondPlayer = "John";
         }
 
-        while (gamePencils > 0) {
-            for (int i = 1; i <= pencils; i++) {
-                System.out.print("|");
-            }
-            System.out.println();
-            System.out.println(firstName + " is going first!");
+        while (true) {
+
+                if (gamePencils != 0) {
+                    printPencils(gamePencils);
+
+                    System.out.println(firstPlayer + "'s turn:");
+                    firstPlayerTurn = scanner.nextInt();
+                    gamePencils = gamePencils - firstPlayerTurn;
+                } else {
+                    break;
+                }
+
+                if (gamePencils != 0) {
+                    printPencils(gamePencils);
+                    System.out.println(secondPlayer + "'s turn:");
+                    secondPlayerTurn = scanner.nextInt();
+                    gamePencils = gamePencils - secondPlayerTurn;
+                } else {
+                    break;
+                }
         }
     }
 
+    private static void printPencils(int pencils) {
+        for (int i = 1; i <= pencils; i++) {
+            System.out.print("|");
+        }
+        System.out.println();
+    }
 }
