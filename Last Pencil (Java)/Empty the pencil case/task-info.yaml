@@ -7,8 +7,17 @@ files:
     visible: false
     learner_created: false
 feedback_link: https://hyperskill.org/learn/step/27998#comment
-status: Solved
+status: Failed
 feedback:
-  message: Congratulations!
-  time: "Thu, 07 Nov 2024 10:50:33 UTC"
-record: -1
+  message: |-
+    Wrong answer in test #1
+
+    Your program should print 2 non-empty lines.
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    How many pencils would you like to use:
+  time: "Thu, 07 Nov 2024 11:03:55 UTC"
+record: 1
