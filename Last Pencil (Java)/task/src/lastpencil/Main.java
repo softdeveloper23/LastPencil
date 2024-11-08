@@ -46,14 +46,11 @@ class GameState {
     }
 
     public String determineSecondPlayer(String firstPlayer) {
-        String secondPlayer;
-
         if (firstPlayer.equals("John")) {
-            secondPlayer = "Jack";
+            return "Jack";
         } else {
-            secondPlayer = "John";
+            return "John";
         }
-        return secondPlayer;
     }
 
     public void playGame(Scanner scanner, GamePencils gamePencils, String firstPlayer, String secondPlayer) {
