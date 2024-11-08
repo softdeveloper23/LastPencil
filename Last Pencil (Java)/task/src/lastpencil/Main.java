@@ -32,7 +32,7 @@ class GameState {
                 }
                 return amount;
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid integer.");
+                System.out.println("The number of pencils should be numeric.");
             }
         }
     }
@@ -65,7 +65,7 @@ class GameState {
                 System.out.println(firstPlayer + "'s turn!");
                 firstPlayerTurn = getValidPencilCount(scanner);
                 gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
-                System.out.println(gamePencils.getPencils());
+                System.out.println(gamePencils.getPencils() + " pencils left.");
             } else {
                 break;
             }
@@ -75,7 +75,7 @@ class GameState {
                 System.out.println(secondPlayer + "'s turn:");
                 secondPlayerTurn = getValidPencilCount(scanner);
                 gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
-                System.out.println(gamePencils.getPencils());
+                System.out.println(gamePencils.getPencils() + " pencil(s) left.");
             } else {
                 break;
             }
@@ -94,7 +94,7 @@ class GameState {
                 }
                 return count;
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid integer.");
+                System.out.println("Possible values: '1', '2' or '3'.");
                 System.out.print("Please enter again: ");
             }
         }
@@ -150,7 +150,7 @@ class PlayerSelection {
                 firstPlayer = playerNames.getJack();
                 break;
             } else {
-                System.out.println("Invalid input. Please choose between "
+                System.out.println("Please choose between "
                         + playerNames.getJohn() + " and " + playerNames.getJack() + ".");
             }
         }
