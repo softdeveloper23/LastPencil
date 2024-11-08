@@ -5,27 +5,44 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int pencils = 0;
-        String john = "John";
-        String jack = "Jack";
+
+        GameState gameState = new GameState();
+
+        GamePencils gamePencils;
+        gamePencils = new GamePencils();
+
+        gamePencils.setPencils(gameState.pencilAmount(scanner));
+
+        PlayerNames playerNames;
+        playerNames = new PlayerNames();
+
+        String john = playerNames.getJohn();
+        String jack = playerNames.getJack();
+
+
+
+
         String firstPlayer = "";
         String secondPlayer = "";
         int firstPlayerTurn = 0;
         int secondPlayerTurn = 0;
 
+        gameState.gameLoop(scanner, john, jack, gamePencils, firstPlayer, secondPlayer,
+                firstPlayerTurn, secondPlayerTurn);
 
-        int gamePencils = pencilAmount(scanner, pencils);
-        gameLoop(scanner, john, jack, gamePencils, firstPlayer, secondPlayer, firstPlayerTurn, secondPlayerTurn);
         scanner.close();
     }
+}
 
-    private static int pencilAmount(Scanner scanner, int pencils) {
+class GameState {
+
+    public int pencilAmount(Scanner scanner) {
+
         System.out.println("How many pencils would you like to use:");
-        pencils = scanner.nextInt();
-        return pencils;
+        return scanner.nextInt();
     }
 
-    private static void gameLoop(Scanner scanner, String john, String jack, int gamePencils,
+    public void gameLoop(Scanner scanner, String john, String jack, GamePencils gamePencils,
                                  String firstPlayer, String secondPlayer, int firstPlayerTurn, int secondPlayerTurn) {
         System.out.println("Who will be the first (John, Jack):");
         String input = scanner.next();
@@ -38,48 +55,44 @@ public class Main {
             secondPlayer = "John";
         }
 
+
+
         while (true) {
 
-                if (gamePencils != 0) {
-                    printPencils(gamePencils);
+            if (gamePencils.getPencils() != 0) {
+                gamePencils.printPencils(gamePencils.getPencils());
 
-                    System.out.println(firstPlayer + "'s turn:");
-                    firstPlayerTurn = scanner.nextInt();
-                    gamePencils = gamePencils - firstPlayerTurn;
-                } else {
-                    break;
-                }
+                System.out.println(firstPlayer + "'s turn:");
+                firstPlayerTurn = scanner.nextInt();
+                gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
+            } else {
+                break;
+            }
 
-                if (gamePencils != 0) {
-                    printPencils(gamePencils);
-                    System.out.println(secondPlayer + "'s turn:");
-                    secondPlayerTurn = scanner.nextInt();
-                    gamePencils = gamePencils - secondPlayerTurn;
-                } else {
-                    break;
-                }
+            if (gamePencils.getPencils() != 0) {
+                gamePencils.printPencils(gamePencils.getPencils());
+                System.out.println(secondPlayer + "'s turn:");
+                secondPlayerTurn = scanner.nextInt();
+                gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
+            } else {
+                break;
+            }
         }
     }
-
-
-}
-
-class GameState {
-    // TODO: Code goes here.
 }
 
 class GamePencils {
-    private static int pencils;
+    private static int pencils = 0;
 
-    public static int getPencils() {
+    public int getPencils() {
         return pencils;
     }
 
-    public static void setPencils(int pencils) {
+    public void setPencils(int pencils) {
         GamePencils.pencils = pencils;
     }
 
-    public static void printPencils(int pencils) {
+    public void printPencils(int pencils) {
         for (int i = 1; i <= pencils; i++) {
             System.out.print("|");
         }
