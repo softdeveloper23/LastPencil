@@ -63,7 +63,7 @@ class GameState {
                 gamePencils.printPencils(gamePencils.getPencils());
 
                 System.out.println(firstPlayer + "'s turn!");
-                firstPlayerTurn = scanner.nextInt();
+                firstPlayerTurn = getValidPencilCount(scanner);
                 gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
                 System.out.println(gamePencils.getPencils());
             } else {
@@ -73,11 +73,29 @@ class GameState {
             if (gamePencils.getPencils() > 0) {
                 gamePencils.printPencils(gamePencils.getPencils());
                 System.out.println(secondPlayer + "'s turn:");
-                secondPlayerTurn = scanner.nextInt();
+                secondPlayerTurn = getValidPencilCount(scanner);
                 gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
                 System.out.println(gamePencils.getPencils());
             } else {
                 break;
+            }
+        }
+    }
+
+    private int getValidPencilCount(Scanner scanner) {
+        while (true) {
+            String input = scanner.nextLine().trim();
+            try {
+                int count = Integer.parseInt(input);
+                if (count <= 0) {
+                    System.out.println("The number of pencils should be positive.");
+                    System.out.print("Please enter again: ");
+                    continue;
+                }
+                return count;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer.");
+                System.out.print("Please enter again: ");
             }
         }
     }
