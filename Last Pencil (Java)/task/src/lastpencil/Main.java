@@ -68,3 +68,15 @@ public class Main {
         System.out.println();
     }
 }
+
+class GameState {
+    // TODO: Code goes here.
+}
+
+class GamePencils {
+    // TODO: Code goes here.
+}
+
+class Players {
+    // TODO: Code goes here.
+}
