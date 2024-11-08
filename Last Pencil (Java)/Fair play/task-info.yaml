@@ -7,69 +7,8 @@ files:
     visible: false
     learner_created: false
 feedback_link: https://hyperskill.org/learn/step/28001#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #17\n\nWhen one of the players enters the number\
-    \ of pencils they want to remove, the program should print 2 non-empty lines.\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nHow many pencils would you like to use:\n&gt; 20\nWho will be the first\
-    \ (John, Jack): \n&gt; JohnJack\nPlease choose between John and Jack.\nWho will\
-    \ be the first (John, Jack): \n&gt; JohnJack\nPlease choose between John and Jack.\n\
-    Who will be the first (John, Jack): \n&gt; JohnJack\nPlease choose between John\
-    \ and Jack.\nWho will be the first (John, Jack): \n&gt; JohnJack\nPlease choose\
-    \ between John and Jack.\nWho will be the first (John, Jack): \n&gt; JohnJack\n\
-    Please choose between John and Jack.\nWho will be the first (John, Jack): \n&gt;\
-    \ John\n||||||||||||||||||||\nJohn&#39;s turn!\n&gt; 4\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; a\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; 0\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; -1\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; _\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; |||||\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; 3\n|||||||||||||||||\nJack&#39;s turn:\n&gt; 4\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; a\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; 0\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; -1\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; _\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |||||\nPossible values:\
-    \ &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; 2\n|||||||||||||||\nJohn&#39;s\
-    \ turn!\n&gt; 4\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt;\
-    \ a\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; 0\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; -1\nPossible values:\
-    \ &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; _\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; |||||\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; 3\n||||||||||||\nJack&#39;s turn:\n&gt; 4\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; a\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; 0\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; -1\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; _\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; |||||\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; 1\n|||||||||||\nJohn&#39;s turn!\n&gt; 4\nPossible values:\
-    \ &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; a\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; 0\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; -1\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; _\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |||||\nPossible values:\
-    \ &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; 2\n|||||||||\nJack&#39;s turn:\n\
-    &gt; 4\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; a\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; 0\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; -1\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; _\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; |\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; |||||\n\
-    Possible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; 3\n||||||\nJohn&#39;s\
-    \ turn!\n&gt; 4\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt;\
-    \ a\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; 0\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; -1\nPossible values:\
-    \ &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; _\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; |||||\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; 3\n|||\nJack&#39;s turn:\n&gt; 4\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; a\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; 0\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; -1\nPossible\
-    \ values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n&gt; _\nPossible values: &#39;1&#39;,\
-    \ &#39;2&#39; or &#39;3&#39;.\n&gt; |\nPossible values: &#39;1&#39;, &#39;2&#39;\
-    \ or &#39;3&#39;.\n&gt; |||||\nPossible values: &#39;1&#39;, &#39;2&#39; or &#39;3&#39;.\n\
-    &gt; 2\nJohn won!"
-  time: "Fri, 08 Nov 2024 16:42:45 UTC"
+  message: Congratulations!
+  time: "Fri, 08 Nov 2024 17:35:10 UTC"
 record: -1
