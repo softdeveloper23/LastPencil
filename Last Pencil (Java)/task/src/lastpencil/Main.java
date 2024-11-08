@@ -77,6 +77,15 @@ class GamePencils {
     // TODO: Code goes here.
 }
 
-class Players {
-    // TODO: Code goes here.
+class PlayerNames {
+    private static final String JOHN = "John";
+    private static final String JACK = "Jack";
+
+    public String getJohn() {
+        return JOHN;
+    }
+
+    public String getJack() {
+        return JACK;
+    }
 }
