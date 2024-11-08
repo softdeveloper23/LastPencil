@@ -59,21 +59,23 @@ class GameState {
 
         while (true) {
 
-            if (gamePencils.getPencils() != 0) {
+            if (gamePencils.getPencils() > 0) {
                 gamePencils.printPencils(gamePencils.getPencils());
 
                 System.out.println(firstPlayer + "'s turn:");
                 firstPlayerTurn = scanner.nextInt();
                 gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
+                System.out.println(gamePencils.getPencils());
             } else {
                 break;
             }
 
-            if (gamePencils.getPencils() != 0) {
+            if (gamePencils.getPencils() > 0) {
                 gamePencils.printPencils(gamePencils.getPencils());
                 System.out.println(secondPlayer + "'s turn:");
                 secondPlayerTurn = scanner.nextInt();
-                gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
+                gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
+                System.out.println(gamePencils.getPencils());
             } else {
                 break;
             }
