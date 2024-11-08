@@ -61,12 +61,7 @@ public class Main {
         }
     }
 
-    private static void printPencils(int pencils) {
-        for (int i = 1; i <= pencils; i++) {
-            System.out.print("|");
-        }
-        System.out.println();
-    }
+
 }
 
 class GameState {
@@ -74,7 +69,7 @@ class GameState {
 }
 
 class GamePencils {
-    private static int pencils = 0;
+    private static int pencils;
 
     public static int getPencils() {
         return pencils;
@@ -82,6 +77,13 @@ class GamePencils {
 
     public static void setPencils(int pencils) {
         GamePencils.pencils = pencils;
+    }
+
+    public static void printPencils(int pencils) {
+        for (int i = 1; i <= pencils; i++) {
+            System.out.print("|");
+        }
+        System.out.println();
     }
 }
 
