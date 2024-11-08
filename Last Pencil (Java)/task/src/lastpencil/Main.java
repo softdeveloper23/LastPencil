@@ -102,14 +102,6 @@ class GameState {
             }
         }
     }
-
-    private String determineWinner(int count, String firstPlayer, String secondPlayer) {
-        if (count % 2 == 0) {
-            return firstPlayer;
-        } else {
-            return secondPlayer;
-        }
-    }
 }
 
 class GamePencils {
