@@ -54,55 +54,60 @@ class GameState {
     }
 
     public void playGame(Scanner scanner, GamePencils gamePencils, String firstPlayer, String secondPlayer) {
-        int firstPlayerTurn = 0;
-        int secondPlayerTurn = 0;
-
-        while (true) {
-
-            if (gamePencils.getPencils() > 1) {
-                gamePencils.printPencils(gamePencils.getPencils());
-
-                System.out.println(firstPlayer + "'s turn!");
-                firstPlayerTurn = getValidPencilCount(scanner, gamePencils);
-                gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
-                System.out.println(gamePencils.getPencils() + " pencils left.");
-            } else {
+        while (gamePencils.getPencils() > 0) {
+            // First player's turn
+            gamePencils.printPencils(gamePencils.getPencils());
+            System.out.println(firstPlayer + "'s turn!");
+            int firstPlayerTurn = getValidPencilCount(scanner, gamePencils);
+            gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
+            if (gamePencils.getPencils() == 0) {
+                System.out.println(secondPlayer + " won!");
                 break;
             }
 
-            if (gamePencils.getPencils() > 0) {
-                gamePencils.printPencils(gamePencils.getPencils());
-                System.out.println(secondPlayer + "'s turn:");
-                secondPlayerTurn = getValidPencilCount(scanner, gamePencils);
-                gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
-                System.out.println(gamePencils.getPencils() + " pencil(s) left.");
-            } else {
+            // Second player's turn
+            gamePencils.printPencils(gamePencils.getPencils());
+            System.out.println(secondPlayer + "'s turn!");
+            int secondPlayerTurn = getValidPencilCount(scanner, gamePencils);
+            gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
+            if (gamePencils.getPencils() == 0) {
+                System.out.println(firstPlayer + " won!");
                 break;
             }
         }
-        System.out.println("You win!");
     }
 
-    private int getValidPencilCount(Scanner scanner, GamePencils gamePencils) {
+    private int getValidPencilCount(Scanner scanner, GamePencils gamePencils, String playerName) {
         while (true) {
             String input = scanner.nextLine().trim();
             try {
                 int count = Integer.parseInt(input);
                 if (count <= 0 || count > 3) {
                     System.out.println("Possible values: '1', '2' or '3'.");
-                    System.out.print("Please enter again: ");
+                    gamePencils.printPencils(gamePencils.getPencils());
+                    System.out.println(playerName + "'s turn!");
                     continue;
                 }
-                if ((gamePencils.getPencils() - count) < 0) {
-                    System.out.println("Too many pencils were taken!");
-                    System.out.print("Please enter again: ");
+                if (count > gamePencils.getPencils()) {
+                    System.out.println("Too many pencils were taken.");
+                    gamePencils.printPencils(gamePencils.getPencils());
+                    System.out.println(playerName + "'s turn!");
                     continue;
                 }
                 return count;
             } catch (NumberFormatException e) {
                 System.out.println("Possible values: '1', '2' or '3'.");
-                System.out.print("Please enter again: ");
+                gamePencils.printPencils(gamePencils.getPencils());
+                System.out.println(playerName + "'s turn!");
             }
+        }
+    }
+
+    private String determineWinner(int count, String firstPlayer, String secondPlayer) {
+        if (count % 2 == 0) {
+            return firstPlayer;
+        } else {
+            return secondPlayer;
         }
     }
 }
