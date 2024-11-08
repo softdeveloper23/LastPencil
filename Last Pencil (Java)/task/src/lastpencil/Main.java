@@ -58,7 +58,7 @@ class GameState {
             // First player's turn
             gamePencils.printPencils(gamePencils.getPencils());
             System.out.println(firstPlayer + "'s turn!");
-            int firstPlayerTurn = getValidPencilCount(scanner, gamePencils);
+            int firstPlayerTurn = getValidPencilCount(scanner, gamePencils, secondPlayer);
             gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
             if (gamePencils.getPencils() == 0) {
                 System.out.println(secondPlayer + " won!");
@@ -68,7 +68,7 @@ class GameState {
             // Second player's turn
             gamePencils.printPencils(gamePencils.getPencils());
             System.out.println(secondPlayer + "'s turn!");
-            int secondPlayerTurn = getValidPencilCount(scanner, gamePencils);
+            int secondPlayerTurn = getValidPencilCount(scanner, gamePencils, firstPlayer);
             gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
             if (gamePencils.getPencils() == 0) {
                 System.out.println(firstPlayer + " won!");
