@@ -74,7 +74,15 @@ class GameState {
 }
 
 class GamePencils {
-    // TODO: Code goes here.
+    private static int pencils = 0;
+
+    public static int getPencils() {
+        return pencils;
+    }
+
+    public static void setPencils(int pencils) {
+        GamePencils.pencils = pencils;
+    }
 }
 
 class PlayerNames {
