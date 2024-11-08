@@ -21,15 +21,44 @@ public class Main {
 class GameState {
 
     public int pencilAmount(Scanner scanner) {
-
-        System.out.println("How many pencils would you like to use:");
-        return scanner.nextInt();
+        while (true) {
+            System.out.println("How many pencils would you like to use:");
+            String input = scanner.nextLine().trim();
+            try {
+                int amount = Integer.parseInt(input);
+                if (amount <= 0) {
+                    System.out.println("The number of pencils should be positive.");
+                    continue;
+                }
+                return amount;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer.");
+            }
+        }
     }
 
     public void gameLoop(Scanner scanner, GamePencils gamePencils) {
         PlayerSelection playerSelection = new PlayerSelection();
         String firstPlayer = playerSelection.getFirstPlayer(scanner);
         String secondPlayer = determineSecondPlayer(firstPlayer);
+        playGame(scanner, gamePencils, firstPlayer, secondPlayer);
+
+    }
+
+    public String determineSecondPlayer(String firstPlayer) {
+        String secondPlayer;
+
+        if (firstPlayer.equals("John")) {
+            secondPlayer = "Jack";
+        } else {
+            secondPlayer = "John";
+        }
+        return secondPlayer;
+    }
+
+    public void playGame(Scanner scanner, GamePencils gamePencils, String firstPlayer, String secondPlayer) {
+        int firstPlayerTurn = 0;
+        int secondPlayerTurn = 0;
 
         while (true) {
 
@@ -54,17 +83,6 @@ class GameState {
                 break;
             }
         }
-    }
-
-    public String determineSecondPlayer(String firstPlayer) {
-        String secondPlayer;
-
-        if (firstPlayer.equals("John")) {
-            secondPlayer = "Jack";
-        } else {
-            secondPlayer = "John";
-        }
-        return secondPlayer;
     }
 }
 
@@ -107,7 +125,7 @@ class PlayerSelection {
 
     public String getFirstPlayer(Scanner scanner) {
         while (true) {
-            System.out.print("Who will be the first (John, Jack): ");
+            System.out.println("Who will be the first (John, Jack): ");
             String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase(playerNames.getJohn())) {
