@@ -87,8 +87,8 @@ class GameState {
             String input = scanner.nextLine().trim();
             try {
                 int count = Integer.parseInt(input);
-                if (count <= 0) {
-                    System.out.println("The number of pencils should be positive.");
+                if (count <= 0 || count > 3) {
+                    System.out.println("Possible values: '1', '2' or '3'.");
                     System.out.print("Please enter again: ");
                     continue;
                 }
