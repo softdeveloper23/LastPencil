@@ -13,6 +13,22 @@ public class Main {
 
         gamePencils.setPencils(gameState.pencilAmount(scanner));
 
+        gameState.gameLoop(scanner, gamePencils);
+
+        scanner.close();
+    }
+}
+
+class GameState {
+
+    public int pencilAmount(Scanner scanner) {
+
+        System.out.println("How many pencils would you like to use:");
+        return scanner.nextInt();
+    }
+
+    public void gameLoop(Scanner scanner, GamePencils gamePencils) {
+
         PlayerNames playerNames;
         playerNames = new PlayerNames();
 
@@ -27,23 +43,6 @@ public class Main {
         int firstPlayerTurn = 0;
         int secondPlayerTurn = 0;
 
-        gameState.gameLoop(scanner, john, jack, gamePencils, firstPlayer, secondPlayer,
-                firstPlayerTurn, secondPlayerTurn);
-
-        scanner.close();
-    }
-}
-
-class GameState {
-
-    public int pencilAmount(Scanner scanner) {
-
-        System.out.println("How many pencils would you like to use:");
-        return scanner.nextInt();
-    }
-
-    public void gameLoop(Scanner scanner, String john, String jack, GamePencils gamePencils,
-                                 String firstPlayer, String secondPlayer, int firstPlayerTurn, int secondPlayerTurn) {
         System.out.println("Who will be the first (John, Jack):");
         String input = scanner.next();
 
