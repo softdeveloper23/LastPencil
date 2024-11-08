@@ -59,11 +59,11 @@ class GameState {
 
         while (true) {
 
-            if (gamePencils.getPencils() > 0) {
+            if (gamePencils.getPencils() > 1) {
                 gamePencils.printPencils(gamePencils.getPencils());
 
                 System.out.println(firstPlayer + "'s turn!");
-                firstPlayerTurn = getValidPencilCount(scanner);
+                firstPlayerTurn = getValidPencilCount(scanner, gamePencils);
                 gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
                 System.out.println(gamePencils.getPencils() + " pencils left.");
             } else {
@@ -73,22 +73,28 @@ class GameState {
             if (gamePencils.getPencils() > 0) {
                 gamePencils.printPencils(gamePencils.getPencils());
                 System.out.println(secondPlayer + "'s turn:");
-                secondPlayerTurn = getValidPencilCount(scanner);
+                secondPlayerTurn = getValidPencilCount(scanner, gamePencils);
                 gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
                 System.out.println(gamePencils.getPencils() + " pencil(s) left.");
             } else {
                 break;
             }
         }
+        System.out.println("You win!");
     }
 
-    private int getValidPencilCount(Scanner scanner) {
+    private int getValidPencilCount(Scanner scanner, GamePencils gamePencils) {
         while (true) {
             String input = scanner.nextLine().trim();
             try {
                 int count = Integer.parseInt(input);
                 if (count <= 0 || count > 3) {
                     System.out.println("Possible values: '1', '2' or '3'.");
+                    System.out.print("Please enter again: ");
+                    continue;
+                }
+                if ((gamePencils.getPencils() - count) < 0) {
+                    System.out.println("Too many pencils were taken!");
                     System.out.print("Please enter again: ");
                     continue;
                 }
