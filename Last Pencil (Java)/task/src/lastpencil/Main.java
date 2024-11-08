@@ -27,39 +27,16 @@ class GameState {
     }
 
     public void gameLoop(Scanner scanner, GamePencils gamePencils) {
-
-        PlayerNames playerNames = new PlayerNames();
-
-        String john = playerNames.getJohn();
-        String jack = playerNames.getJack();
-
-        String firstPlayer = "";
-        String secondPlayer = "";
-        int firstPlayerTurn = 0;
-        int secondPlayerTurn = 0;
-
-        System.out.println("Who will be the first (John, Jack):");
-        String input = scanner.next();
-        input = input.trim().toLowerCase();
-
-        if (input.equals(playerNames.getJohn().toLowerCase())) {
-            firstPlayer = playerNames.getJohn();
-            secondPlayer = playerNames.getJack();
-        } else if (input.equals(playerNames.getJack().toLowerCase())) {
-            firstPlayer = playerNames.getJack();
-            secondPlayer = playerNames.getJohn();
-        } else {
-            System.out.println("Choose between " + playerNames.getJohn() + " and " + playerNames.getJack());
-        }
-
-
+        PlayerSelection playerSelection = new PlayerSelection();
+        String firstPlayer = playerSelection.getFirstPlayer(scanner);
+        String secondPlayer = determineSecondPlayer(firstPlayer);
 
         while (true) {
 
             if (gamePencils.getPencils() > 0) {
                 gamePencils.printPencils(gamePencils.getPencils());
 
-                System.out.println(firstPlayer + "'s turn:");
+                System.out.println(firstPlayer + "'s turn!");
                 firstPlayerTurn = scanner.nextInt();
                 gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
                 System.out.println(gamePencils.getPencils());
@@ -77,6 +54,17 @@ class GameState {
                 break;
             }
         }
+    }
+
+    public String determineSecondPlayer(String firstPlayer) {
+        String secondPlayer;
+
+        if (firstPlayer.equals("John")) {
+            secondPlayer = "Jack";
+        } else {
+            secondPlayer = "John";
+        }
+        return secondPlayer;
     }
 }
 
@@ -109,5 +97,30 @@ class PlayerNames {
 
     public String getJack() {
         return JACK;
+    }
+}
+
+class PlayerSelection {
+    String firstPlayer;
+
+    PlayerNames playerNames = new PlayerNames();
+
+    public String getFirstPlayer(Scanner scanner) {
+        while (true) {
+            System.out.print("Who will be the first (John, Jack): ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase(playerNames.getJohn())) {
+                firstPlayer = playerNames.getJohn();
+                break;
+            } else if (input.equalsIgnoreCase(playerNames.getJack())) {
+                firstPlayer = playerNames.getJack();
+                break;
+            } else {
+                System.out.println("Invalid input. Please choose between "
+                        + playerNames.getJohn() + " and " + playerNames.getJack() + ".");
+            }
+        }
+        return firstPlayer;
     }
 }
