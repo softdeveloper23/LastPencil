@@ -8,8 +8,7 @@ public class Main {
 
         GameState gameState = new GameState();
 
-        GamePencils gamePencils;
-        gamePencils = new GamePencils();
+        GamePencils gamePencils = new GamePencils();
 
         gamePencils.setPencils(gameState.pencilAmount(scanner));
 
@@ -29,14 +28,10 @@ class GameState {
 
     public void gameLoop(Scanner scanner, GamePencils gamePencils) {
 
-        PlayerNames playerNames;
-        playerNames = new PlayerNames();
+        PlayerNames playerNames = new PlayerNames();
 
         String john = playerNames.getJohn();
         String jack = playerNames.getJack();
-
-
-
 
         String firstPlayer = "";
         String secondPlayer = "";
@@ -45,13 +40,16 @@ class GameState {
 
         System.out.println("Who will be the first (John, Jack):");
         String input = scanner.next();
+        input = input.trim().toLowerCase();
 
-        if (input.equals(john)) {
-            firstPlayer = "John";
-            secondPlayer = "Jack";
+        if (input.equals(playerNames.getJohn().toLowerCase())) {
+            firstPlayer = playerNames.getJohn();
+            secondPlayer = playerNames.getJack();
+        } else if (input.equals(playerNames.getJack().toLowerCase())) {
+            firstPlayer = playerNames.getJack();
+            secondPlayer = playerNames.getJohn();
         } else {
-            firstPlayer = "Jack";
-            secondPlayer = "John";
+            System.out.println("Choose between " + playerNames.getJohn() + " and " + playerNames.getJack());
         }
 
 
