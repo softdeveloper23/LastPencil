@@ -1,5 +1,6 @@
 package lastpencil;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -40,8 +41,36 @@ class GameState {
     public void gameLoop(Scanner scanner, GamePencils gamePencils) {
         PlayerSelection playerSelection = new PlayerSelection();
         String firstPlayer = playerSelection.getFirstPlayer(scanner);
+        playGame(scanner, gamePencils, firstPlayer);
+    }
+
+    public void playGame(Scanner scanner, GamePencils gamePencils, String firstPlayer) {
+        String currentPlayer = firstPlayer;
         String secondPlayer = determineSecondPlayer(firstPlayer);
-        playGame(scanner, gamePencils, firstPlayer, secondPlayer);
+
+        while (gamePencils.getPencils() > 0) {
+            gamePencils.printPencils(gamePencils.getPencils());
+            System.out.println(currentPlayer + "'s turn:");
+            int move;
+
+            if (currentPlayer.equals("Jack")) {
+                move = getBotMove(gamePencils.getPencils());
+                System.out.println(move);
+            } else {
+                move = getValidPencilCount(scanner, gamePencils, currentPlayer);
+            }
+
+            gamePencils.setPencils(gamePencils.getPencils() - move);
+
+            if (gamePencils.getPencils() == 0) {
+                String winner = currentPlayer.equals(firstPlayer) ? secondPlayer : firstPlayer;
+                System.out.println(winner + " won!");
+                break;
+            }
+
+            // Switch players
+            currentPlayer = currentPlayer.equals(firstPlayer) ? secondPlayer : firstPlayer;
+        }
     }
 
     public String determineSecondPlayer(String firstPlayer) {
@@ -52,32 +81,6 @@ class GameState {
         }
     }
 
-    public void playGame(Scanner scanner, GamePencils gamePencils, String firstPlayer, String secondPlayer) {
-        while (gamePencils.getPencils() > 0) {
-            // First player's turn
-            gamePencils.printPencils(gamePencils.getPencils());
-            System.out.println(firstPlayer + "'s turn!");
-            int firstPlayerTurn = getValidPencilCount(scanner, gamePencils, firstPlayer);
-            gamePencils.setPencils(gamePencils.getPencils() - firstPlayerTurn);
-            if (gamePencils.getPencils() == 0) {
-                System.out.println(secondPlayer + " won!");
-                break;
-            }
-
-            // Second player's turn
-            if (gamePencils.getPencils() > 0) {
-                gamePencils.printPencils(gamePencils.getPencils());
-                System.out.println(secondPlayer + "'s turn!");
-                int secondPlayerTurn = getValidPencilCount(scanner, gamePencils, secondPlayer);
-                gamePencils.setPencils(gamePencils.getPencils() - secondPlayerTurn);
-                if (gamePencils.getPencils() == 0) {
-                    System.out.println(firstPlayer + " won!");
-                    break;
-                }
-            }
-        }
-    }
-
     private int getValidPencilCount(Scanner scanner, GamePencils gamePencils, String playerName) {
         while (true) {
             String input = scanner.nextLine().trim();
@@ -85,20 +88,37 @@ class GameState {
                 int count = Integer.parseInt(input);
                 if (count <= 0 || count > 3) {
                     System.out.println("Possible values: '1', '2' or '3'");
-                    gamePencils.printPencils(gamePencils.getPencils());
                     continue;
                 }
                 if (count > gamePencils.getPencils()) {
                     System.out.println("Too many pencils were taken");
-                    gamePencils.printPencils(gamePencils.getPencils());
                     continue;
                 }
                 return count;
             } catch (NumberFormatException e) {
                 System.out.println("Possible values: '1', '2' or '3'");
-                gamePencils.printPencils(gamePencils.getPencils());
             }
         }
+    }
+
+    private int getBotMove(int pencilsRemaining) {
+        int move;
+        if (pencilsRemaining % 4 == 0) {
+            move = 3;
+        } else if (pencilsRemaining % 4 == 3) {
+            move = 2;
+        } else if (pencilsRemaining % 4 == 2) {
+            move = 1;
+        } else {
+            // Losing position, bot can take any valid move
+            // For simplicity, we'll take 1
+            move = 1;
+        }
+        // Ensure the move doesn't exceed the pencils remaining
+        if (move > pencilsRemaining) {
+            move = pencilsRemaining;
+        }
+        return move;
     }
 }
 
@@ -151,7 +171,7 @@ class PlayerSelection {
                 firstPlayer = playerNames.getJack();
                 break;
             } else {
-                System.out.println("Please choose between John and Jack");
+                System.out.println("Choose between 'John' and 'Jack'");
             }
         }
         return firstPlayer;
